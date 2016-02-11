@@ -335,76 +335,56 @@
 
     </div>
     <div class="row">
-      <div class="col-md-12 docs-buttons">
-        <!-- <h3 class="page-header">Toolbar:</h3> -->       
+      		<div class="col-md-2 docs-buttons">
+</div>
+<div class="col-md-2 docs-buttons text-center">
 
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.05" title="Zoom In">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-search-plus"></span>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.05" title="Zoom Out">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-search-minus"></span>
-            </span>
-          </button>
-        </div>
-
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-arrow-left"></span>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-arrow-right"></span>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-arrow-up"></span>
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-arrow-down"></span>
+        <div class="btn-group btn-group-crop">
+          <button data-method="getCroppedCanvas" class="btn btn-primary docs-tooltip" type="button" title="ffff">
+            <span data-toggle="tooltip" data-original-title="" title="">
+              <span class="fa fa-picture-o fa-lg " title="просмотр"></span> Просмотр
             </span>
           </button>
         </div>
         
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="reset">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-refresh"></span>
-            </span>
-          </button>
-          <label class="btn btn-primary btn-upload" for="inputImage">
-            <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
-            <span data-toggle="tooltip">
+  </div>
+        
+     
+<div class="col-md-1 docs-buttons"></div>
+<div class="col-md-2 docs-buttons">   
+        <div class="btn-group">          
+          <label for="inputImage" class="btn btn-primary btn-upload">
+            <input type="file" accept="image/*" name="file" id="inputImage" class="sr-only">
+            <span data-toggle="tooltip" data-original-title="" title="">
               <span class="fa fa-upload"></span> Выбрать файл
             </span>
           </label>
         </div>
+  </div>
 
-        <div class="btn-group btn-group-crop">
-          <button type="button" class="btn btn-primary" data-method="getCroppedCanvas">
-            <span class="docs-tooltip" data-toggle="tooltip">
-              <span class="fa fa-eye"></span> Просмотр
+<div class="col-md-1 docs-buttons"></div>
+		
+		
+<div class="col-md-2 docs-buttons"></div>
+<div class="col-md-2 docs-buttons">
+        <div class="btn-group btn-group-crop  pull-center">
+          <button title="ffff" type="button" class="btn btn-primary docs-tooltip" data-method="getCroppedCanvas">
+            <span title="" data-original-title="" data-toggle="tooltip">
+              <span title="просмотр" class="fa fa-picture-o fa-lg "></span> Просмотр
             </span>
           </button>
         </div>
+  </div> 
 
         <!-- Show the cropped image in modal -->
-        <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div style="display: none;" class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
               </div>
-              <div class="modal-body"></div>
+              <div class="modal-body"><img id="full_site_image" src="" alt="Picture"></div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <a class="btn btn-primary" id="download" href="javascript:void(0);">Download</a>
@@ -412,10 +392,7 @@
             </div>
           </div>
         </div><!-- /.modal -->
-      </div><!-- /.docs-toggles -->
     </div>
-	
-  <img id="xxx" />
   </div>
   
   
