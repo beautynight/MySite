@@ -1843,12 +1843,11 @@ jQuery(document).ready(function() {
 	
 	/*	
 console.clear();
-var data = $('#full_site_image').cropper('getData');
-console.log(data);
-Math.min(1280/data.width,960/data.height)
+var d = $('#full_site_image').cropper('renderCropBox');
+var maxWidth = Math.min(1280,d.width*960/d.height,d.width);
 
-var result = $('#full_site_image').cropper('getCroppedCanvas', {height:240});
-$('#xxx').attr('src', result.toDataURL('image/jpeg', 0.9))
+var result = $('#full_site_image').cropper('getCroppedCanvas', {width:maxWidth, fillColor:'#f00'});
+$('#xxx').attr('src', result.toDataURL('image/jpeg', 0.9));
 */
 	
 	
@@ -1862,39 +1861,12 @@ $(function () {
   var $thumb_site_image = $('#thumb_site_image');
   var $image = $('#full_site_image, #thumb_site_image');
   var $download = $('#download');
-  var options = {
-	//aspectRatio: 16 / 9,
-	viewMode: 1,
-	minCanvasWidth: 320,
-	minCanvasHeight: 240,
-	minCropBoxWidth: 80,
-	minCropBoxHeight: 60,
-	
-	/*,
-	preview: '.img-preview',
-	crop: function (e) {
-		console.log(e);
-	}*/
-  };
-
-
-  // Tooltip
-  //$('[data-toggle="tooltip"]').tooltip();
-
-
-  // Cropper
-  $full_site_image.cropper(options);
   
-  $thumb_site_image.cropper($.extend(options, {aspectRatio: 4/3}));
-
+  $full_site_image.cropper();
   
+  $thumb_site_image.cropper({aspectRatio: 4/3});
 
 
-  // Download
-  if (typeof $download[0].download === 'undefined') {
-	console.warn($download);
-    $download.addClass('disabled');
-  }
 
 
   // Methods
@@ -1911,7 +1883,7 @@ $(function () {
     if ($full_site_image.data('cropper') && data.method) {
       data = $.extend({}, data); // Clone a new one
 
-      if (typeof data.target !== 'undefined') {
+      /*if (typeof data.target !== 'undefined') {
         $target = $(data.target);
 
         if (typeof data.option === 'undefined') {
@@ -1921,15 +1893,15 @@ $(function () {
             console.log(e.message);
           }
         }
-      }
+      }*/
 
       result = $full_site_image.cropper(data.method, data.option, data.secondOption);
 
       switch (data.method) {
-        case 'scaleX':
+        /*case 'scaleX':
         case 'scaleY':
           $(this).data('option', -data.option);
-          break;
+          break;*/
 
         case 'getCroppedCanvas':
           if (result) {

@@ -335,24 +335,17 @@
 
     </div>
     <div class="row">
-      <div class="col-md-9 docs-buttons">
-        <!-- <h3 class="page-header">Toolbar:</h3> -->
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
-              <span class="fa fa-arrows"></span>
-            </span>
-          </button>
-        </div>
+      <div class="col-md-12 docs-buttons">
+        <!-- <h3 class="page-header">Toolbar:</h3> -->       
 
         <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">
+          <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.05" title="Zoom In">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-search-plus"></span>
             </span>
           </button>
-          <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">
+          <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.05" title="Zoom Out">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-search-minus"></span>
             </span>
           </button>
@@ -360,55 +353,45 @@
 
         <div class="btn-group">
           <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;move&quot;, -10, 0)">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-arrow-left"></span>
             </span>
           </button>
           <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;move&quot;, 10, 0)">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-arrow-right"></span>
             </span>
           </button>
           <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;move&quot;, 0, -10)">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-arrow-up"></span>
             </span>
           </button>
           <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;move&quot;, 0, 10)">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-arrow-down"></span>
             </span>
           </button>
         </div>
         
         <div class="btn-group">
-          <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;reset&quot;)">
+          <button type="button" class="btn btn-primary" data-method="reset">
+            <span class="docs-tooltip" data-toggle="tooltip">
               <span class="fa fa-refresh"></span>
             </span>
           </button>
-          <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+          <label class="btn btn-primary btn-upload" for="inputImage">
             <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
-            <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
-              <span class="fa fa-upload"></span>
+            <span data-toggle="tooltip">
+              <span class="fa fa-upload"></span> Выбрать файл
             </span>
           </label>
         </div>
 
         <div class="btn-group btn-group-crop">
           <button type="button" class="btn btn-primary" data-method="getCroppedCanvas">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">
-              Get Cropped Canvas
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 160, height: 90 })">
-              160&times;90
-            </span>
-          </button>
-          <button type="button" class="btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 320, &quot;height&quot;: 180 }">
-            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 320, height: 180 })">
-              320&times;180
+            <span class="docs-tooltip" data-toggle="tooltip">
+              <span class="fa fa-eye"></span> Просмотр
             </span>
           </button>
         </div>
@@ -424,13 +407,15 @@
               <div class="modal-body"></div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.png">Download</a>
+                <a class="btn btn-primary" id="download" href="javascript:void(0);">Download</a>
               </div>
             </div>
           </div>
         </div><!-- /.modal -->
       </div><!-- /.docs-toggles -->
     </div>
+	
+  <img id="xxx" />
   </div>
   
   
