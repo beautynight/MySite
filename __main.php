@@ -1859,11 +1859,9 @@ $(function () {
   var console = window.console || { log: function () {} };
   var $full_site_image = $('#full_site_image');
   var $thumb_site_image = $('#thumb_site_image');
-  var $image = $('#full_site_image, #thumb_site_image');
   var $download = $('#download');
   
-  $full_site_image.cropper();
-  
+  $full_site_image.cropper();  
   $thumb_site_image.cropper({aspectRatio: 4/3});
 
 
@@ -1875,56 +1873,24 @@ $(function () {
     var data = $this.data();
     var $target;
     var result;
+	var $preview = data.control == 1 ? $full_site_image : $thumb_site_image;
 
     if ($this.prop('disabled') || $this.hasClass('disabled')) {
       return;
     }
+	
 
-    if ($full_site_image.data('cropper') && data.method) {
-      data = $.extend({}, data); // Clone a new one
+    if ($preview.data('cropper') && data.method) {
+	  if (data.control == 1) {
+		var d = $preview.cropper('getCroppedCanvas');
+	    data.option = {width:Math.min(1280,d.width*960/d.height,d.width)};
+	  } else {data.option = {width:320};}
+	  
+      data = $.extend({}, data);
 
-      /*if (typeof data.target !== 'undefined') {
-        $target = $(data.target);
-
-        if (typeof data.option === 'undefined') {
-          try {
-            data.option = JSON.parse($target.val());
-          } catch (e) {
-            console.log(e.message);
-          }
-        }
-      }*/
-
-      result = $full_site_image.cropper(data.method, data.option, data.secondOption);
-
-      switch (data.method) {
-        /*case 'scaleX':
-        case 'scaleY':
-          $(this).data('option', -data.option);
-          break;*/
-
-        case 'getCroppedCanvas':
-          if (result) {
-
-            // Bootstrap's Modal
-            $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-
-            if (!$download.hasClass('disabled')) {
-              $download.attr('href', result.toDataURL());
-            }
-          }
-
-          break;
-      }
-
-      if ($.isPlainObject(result) && $target) {
-        try {
-          $target.val(JSON.stringify(result));
-        } catch (e) {
-          console.log(e.message);
-        }
-      }
-
+      result = $preview.cropper(data.method, data.option);
+	  $download.attr('href', result.toDataURL('image/jpeg', 0.9));
+	  $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
     }
   });
 
@@ -1951,6 +1917,7 @@ $(function () {
           $full_site_image.one('built.cropper', function () {
 				$thumb_site_image.one('built.cropper', function () {
 					URL.revokeObjectURL(blobURL);
+					$('button[data-control]').removeClass('disabled');
 			  }).cropper('reset').cropper('replace', blobURL);
           }).cropper('reset').cropper('replace', blobURL);
           $inputImage.val('');

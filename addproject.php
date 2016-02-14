@@ -80,7 +80,7 @@
                       </label>
                     </div>
                     <!-- end section -->
-                    <div class="section-divider mv40">
+                    <div class="section-divider mt40 mb25">
                       <span> Тарифные планы </span>
                     </div>
                     <!-- .section-divider -->
@@ -187,7 +187,7 @@
 					
 					
 					
-                    <div class="section-divider mt40 mb20">
+                    <div class="section-divider mt40 mb25">
                       <span> Реферальная программа </span>
                     </div>
                     <!-- .section-divider -->
@@ -217,7 +217,7 @@
 					</div>
                     <!-- end section -->
 
-                    <div class="section-divider mt40 mb20">
+                    <div class="section-divider mt40 mb25">
                       <span> Языки сайта </span>
                     </div>
                     <!-- .section-divider -->
@@ -254,144 +254,90 @@
 					
 					
 
-
-                    <div class="section-divider mv40">
-                      <span> Проверочный код </span>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+                    <div class="section-divider mt40 mb25">
+                      <span> Скриншот сайта </span>
                     </div>
-                    <!-- .section-divider -->
-                    <div class="section">
-                      <div class="smart-widget sm-left sml-120">
-                        <label class="field prepend-icon">
-                          <input name="verification" class="gui-input onlyNumber" placeholder="Проверочный код">
-                          <label class="field-icon">
-                            <i class="fa fa-shield"></i>
-                          </label>
-                        </label>
-                        <label class="button btn-primary">3 + 5 = </label>
-                      </div>
-                      <!-- end .smart-widget section -->
-                    </div>
-                    <!-- end section -->
-
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<!-- Content -->
   <div class="section">
     <div class="section row br-a br-greyer mn mb15 p2">
       <div class="col-md-6 img-container pl1 mb1">
-          <img id="full_site_image" src="" alt="Picture">
+          <img id="full_site_image" src="" alt="Скриншот всего сайта">
       </div>	  
       
       <div class="col-md-6 img-container pr1 mb1">
-          <img id="thumb_site_image" src="" alt="Picture">
+          <img id="thumb_site_image" src="" alt="Эскиз">
       </div>
 
     </div>
-    <div class="row">
-      		<div class="col-md-2 docs-buttons">
-</div>
-<div class="col-md-2 docs-buttons text-center">
-
-        <div class="btn-group btn-group-crop">
-          <button data-method="getCroppedCanvas" class="btn btn-primary docs-tooltip" type="button" title="ffff">
-            <span data-toggle="tooltip" data-original-title="" title="">
-              <span class="fa fa-picture-o fa-lg " title="просмотр"></span> Просмотр
-            </span>
-          </button>
-        </div>
-        
-  </div>
-        
-     
-<div class="col-md-1 docs-buttons"></div>
-<div class="col-md-2 docs-buttons">   
-        <div class="btn-group">          
-          <label for="inputImage" class="btn btn-primary btn-upload">
-            <input type="file" accept="image/*" name="file" id="inputImage" class="sr-only">
-            <span data-toggle="tooltip" data-original-title="" title="">
-              <span class="fa fa-upload"></span> Выбрать файл
-            </span>
-          </label>
-        </div>
-  </div>
-
-<div class="col-md-1 docs-buttons"></div>
-		
-		
-<div class="col-md-2 docs-buttons"></div>
-<div class="col-md-2 docs-buttons">
-        <div class="btn-group btn-group-crop  pull-center">
-          <button title="ffff" type="button" class="btn btn-primary docs-tooltip" data-method="getCroppedCanvas">
-            <span title="" data-original-title="" data-toggle="tooltip">
-              <span title="просмотр" class="fa fa-picture-o fa-lg "></span> Просмотр
-            </span>
-          </button>
-        </div>
-  </div> 
+    <div class="section row">		
+	  <div class="col-md-12 docs-buttons">
+	    <div class="btn-group btn-group-crop">
+	  	  
+	  	  <button title="Просмотр" data-toggle="tooltip" type="button" class="btn btn-primary disabled" data-method="getCroppedCanvas" data-control=1>
+	  		  <span class="fa fa-picture-o fa-lg "></span>
+	  	  </button>
+	  	
+	  	  <label for="inputImage" class="btn btn-primary btn-upload">
+	  		<input type="file" accept="image/*" name="file" id="inputImage" class="sr-only">
+	  		<span data-toggle="tooltip" data-original-title="" title="">
+	  		  <span class="fa fa-upload"></span> Выбрать файл
+	  		</span>
+	  	  </label>
+	  	  
+	  	  <button title="Просмотр" data-toggle="tooltip" type="button" class="btn btn-primary disabled" data-method="getCroppedCanvas" data-control=0>
+	  		  <span class="fa fa-picture-o fa-lg "></span>
+	  	  </button>
+	  	  
+	    </div>
+	  </div> 
 
         <!-- Show the cropped image in modal -->
-        <div style="display: none;" class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
-              </div>
-              <div class="modal-body"><img id="full_site_image" src="" alt="Picture"></div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a class="btn btn-primary" id="download" href="javascript:void(0);">Download</a>
-              </div>
+      <div style="display: none;" class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="getCroppedCanvasTitle">Просмотр</h4>
+            </div>
+            <div class="modal-body"><img id="full_site_image" src="" alt="Picture"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              <a class="btn btn-primary" target="blank" id="download" href="javascript:void(0);">Скачать</a>
             </div>
           </div>
-        </div><!-- /.modal -->
+        </div>
+      </div><!-- /.modal -->
     </div>
   </div>
   
@@ -401,20 +347,6 @@
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-						
-						
 						
 						
 						
