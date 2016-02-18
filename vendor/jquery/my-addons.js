@@ -37,12 +37,12 @@ var controls = function() {
 	});
 	
 	
-	form = $("#addproject_form");
-	$('[name][name!="lang[]"]:visible', form).on('focusin', function(e) {
+	form = $("#addproject_form");	
+	$('[name]:not([name$="[]"]:visible)', form).on('focusin', function(e) {
 		$(this).parent().removeClass('state-error');
 	});
-	$('div.langs :checkbox').on('click', function(e) {
-		$('div.langs:has(:checked) :checkbox').parent().removeClass('state-error');
+	$('div.langs, div.payments').find(':checkbox').on('click', function(e) {
+		$('div.langs:has(:checked) :checkbox').add('div.payments:has(:checked) :checkbox').parent().removeClass('state-error');
 	});
 }
 
@@ -88,15 +88,20 @@ var imgClickInit = function() {
 
 var addproject_form = function() {
 	form.submit(function(){		
-		var a = $('[name][name!="ref_percent[]"][name!="lang[]"]:visible', form).filter(function(i) {return $(this).val() === "";}).parent()
-				.add('div.langs:not(:has(:checked)) label', form);
+		var a = $('[name]:not([name$="[]"]:visible)', form).filter(function(i) {return $(this).val() === "";}).parent();
+		var b = $('div.payments:not(:has(:checked)) label', form)
+				.add('div.langs :not(:has(:checked)) label', form);
 		a.addClass('state-error');
 		if (a.length) {
 			var v = a.eq(0).offset().top;
 			$('html').animate({ scrollTop: v - 75}, 250+Math.abs($('html').scrollTop()-v)*0.5, 'easeOutQuad');
+			return !1;
+		}
+		else if ($('#full_site_image').attr('src') === "") {
+			alert('Загрузите скриншот сайта'); return !0;
 		}
 		
-		if (!a.length && GO) {
+		if (GO) {
 			$.ajax({
 			   type: 'POST',
 			   url: '_!addproject.php',

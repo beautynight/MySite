@@ -230,6 +230,7 @@
                     </div>
                     <!-- .section-divider -->
 
+					<div class="payments">
                     <div class="section row">
 						<?php						
 						  $db->query("select id, name from payments order by pos");
@@ -240,6 +241,7 @@
 							if (($k+1)%$div === 0  ||  $k === $db->nums-1) echo '</div>';
 						  }
 						?>					  
+                    </div>
                     </div>
 					
 					
@@ -347,7 +349,7 @@
 	  	  </button>
 	  	
 	  	  <label for="inputImage" class="btn btn-primary btn-upload">
-	  		<input type="file" accept="image/*" name="file" id="inputImage" class="sr-only">
+	  		<input type="file" accept="image/*" id="inputImage" class="sr-only">
 	  		<span data-toggle="tooltip" data-original-title="" title="">
 	  		  <span class="fa fa-upload"></span> Выбрать файл
 	  		</span>
