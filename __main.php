@@ -32,6 +32,7 @@
 <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.min.css">
 <link rel="stylesheet" type="text/css" href="assets/fonts/glyphicons-pro/glyphicons-pro.css">
 <link rel="stylesheet" type="text/css" href="assets/flags/flags.css">
+<link rel="stylesheet" type="text/css" href="assets/payments/payments.css">
   
 <!-- для работы с картинками-->
 <link rel="stylesheet" type="text/css" href="vendor/plugins/magnific/magnific-popup.css">

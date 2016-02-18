@@ -210,12 +210,50 @@
 						  </div>
 						  <!-- end section -->
 						</div>
-					</div>
+					</div>		
 					  
                     <div class="section">
 						<button type="button" class="button btn-primary copy"> Добавить уровень </button>
 					</div>
                     <!-- end section -->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section-divider mt40 mb25">
+                      <span> Платёжные системы </span>
+                    </div>
+                    <!-- .section-divider -->
+
+                    <div class="section row">
+						<?php						
+						  $db->query("select id, name from payments order by pos");
+						  $div = ceil($db->nums/3);
+						  foreach($db->result as $k => $v) {
+							if ($k%$div === 0) echo '<div class="col-md-4 pad-r40 border-right">';
+							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="payment[]" value="'.$v['id'].'"><span class="checkbox"></span> <i class="pay pay-'.$v['name'].'" ></i> '.$v['name'].'</label>';
+							if (($k+1)%$div === 0  ||  $k === $db->nums-1) echo '</div>';
+						  }
+						?>					  
+                    </div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 
                     <div class="section-divider mt40 mb25">
                       <span> Языки сайта </span>
