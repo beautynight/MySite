@@ -1696,7 +1696,7 @@
   
   <!-- FullCalendar Plugin + moment Dependency -->
   <script src="vendor/plugins/fullcalendar/lib/moment.min.js"></script>
-  <script src="vendor/plugins/fullcalendar/fullcalendar.min.js"></script>
+  <!--<script src="vendor/plugins/fullcalendar/fullcalendar.min.js"></script>-->
   
   <!-- Widget Javascript -->
   <script src="assets/js/demo/widgets.js"></script>
@@ -1774,10 +1774,8 @@ var changeScrollContentHeight = function() {
 /* ------------------------------------------------------------ DATEPICKER ------------------------------------------------------------ */
 var datePickerInit = function() {
 	$(".datepicker").datepicker({
-      numberOfMonths: 1,
       prevText: '<i class="fa fa-chevron-left"></i>',
       nextText: '<i class="fa fa-chevron-right"></i>',
-      showButtonPanel: false,
       beforeShow: function(input, inst) {
         var newclass = 'admin-form';
         var themeClass = $(this).parents('.admin-form').attr('class');
