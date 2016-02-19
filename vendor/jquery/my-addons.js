@@ -42,7 +42,7 @@ var controls = function() {
 		$(this).parent().removeClass('state-error');
 	});
 	$('div.langs, div.payments').find(':checkbox').on('click', function(e) {
-		$('div.langs:has(:checked) :checkbox').add('div.payments:has(:checked) :checkbox').parent().removeClass('state-error');
+		$('div.payments:has(:checked) label,div.langs:has(:checked) label', form).parent().removeClass('state-error');
 	});
 }
 
@@ -84,21 +84,24 @@ var imgClickInit = function() {
     });
 }
 
-//function s(v) {return v ? 'success' : 'error'}
-
 var addproject_form = function() {
 	form.submit(function(){		
-		var a = $('[name]:not([name$="[]"]:visible)', form).filter(function(i) {return $(this).val() === "";}).parent();
-		var b = $('div.payments:not(:has(:checked)) label', form)
-				.add('div.langs :not(:has(:checked)) label', form);
+		var a = $('[name]:not([name$="[]"]:visible)', form).filter(function(i) {return $(this).val() === "";})
+			.add('div.payments:not(:has(:checked)) label,div.langs:not(:has(:checked)) label', form)
+			.parent();		
 		a.addClass('state-error');
+		if ($('#full_site_image').attr('src') === "") {
+			$('label[for=inputImage]').addClass('btn-danger').removeClass('btn-primary');
+			a = a.add('label[for=inputImage]');
+		};
 		if (a.length) {
 			var v = a.eq(0).offset().top;
 			$('html').animate({ scrollTop: v - 75}, 250+Math.abs($('html').scrollTop()-v)*0.5, 'easeOutQuad');
 			return !1;
 		}
 		else if ($('#full_site_image').attr('src') === "") {
-			alert('Загрузите скриншот сайта'); return !0;
+			alert('Загрузите скриншот сайта'); 
+			return !1;
 		}
 		
 		if (GO) {
@@ -126,17 +129,3 @@ var addproject_form = function() {
 		return false;
 	});
 }
-
-
-
-
-
-/*
-var data = {};
-$('#addproject_form input[type=text][name],input[type=checkbox]:checked').each(function () {
-  var name = $(this).attr('name');
-  console.log(name);
-  data[name] = $(this).val();
-});
-console.log(data);
-*/

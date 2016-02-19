@@ -1799,58 +1799,9 @@ var adminPanelInit = function() {
  
 <script type="text/javascript">
 jQuery(document).ready(function() {
-    "use strict";
-	
-    // Init Theme Core    
+    "use strict";  
     Core.init();
-    // Init Demo JS  
     Demo.init();
-	
-	
-	/*$image = $('.img-container > img')
-	viewMode: 1,
-	aspectRatio: 1.5,
-	
-    // ###   ###   ###		  Cropper Demo    
-	result = $image.cropper(data.method, data.option);
-
-	$.ajax({
-		type: "POST",
-		url: "_!crop.php",
-		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-		data: { 
-			imgBase64: result.toDataURL('image/jpeg', 0.9),
-			ajax: 1
-		}
-	}).done(function(o) {
-		console.log('saved');
-	});
-
-	if (data.method === 'getCroppedCanvas') {
-		$('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-	}
-
-	if ($.isPlainObject(result) && $target) {
-		try {
-		  $target.val(JSON.stringify(result));
-		} 
-		catch (e) {
-			console.log(e.message);
-		}
-	}*/
-	
-	
-	
-	
-	/*	
-console.clear();
-var d = $('#full_site_image').cropper('renderCropBox');
-var maxWidth = Math.min(1280,d.width*960/d.height,d.width);
-
-var result = $('#full_site_image').cropper('getCroppedCanvas', {width:maxWidth, fillColor:'#f00'});
-$('#xxx').attr('src', result.toDataURL('image/jpeg', 0.9));
-*/
-	
 	
 	
 $(function () {
@@ -1903,6 +1854,7 @@ $(function () {
 
   if (URL) {
     $inputImage.change(function () {
+	  $inputImage.parent().addClass('btn-primary').removeClass('btn-danger');
       var files = this.files;
       var file;
 

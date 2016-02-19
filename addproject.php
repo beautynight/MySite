@@ -59,6 +59,16 @@
                     <!-- end section -->
 
                     <div class="section">
+                      <label for="date1" class="field prepend-icon">
+						  <input type="text" name="date" class="datepicker gui-input" placeholder="Дата начала работы">
+						  <label for="date" class="field-icon">
+							<i class="fa fa-calendar"></i>
+						  </label>
+						</label>
+                    </div>
+                    <!-- end section -->
+
+                    <div class="section">
                       <label class="field prepend-icon">
                         <textarea class="gui-textarea" name="description" placeholder="Описание проекта"></textarea>
                         <label class="field-icon">
@@ -415,5 +425,5 @@
       <!-- End: Content -->
 	  
 	  <script>
-		scripts.addOne(['initTypes', 'controls', 'addproject_form']);
+		scripts.addOne(['initTypes', 'controls', 'addproject_form', 'datePickerInit']);
 	  </script>
