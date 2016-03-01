@@ -1811,7 +1811,7 @@ $(function () {
   var $thumb_site_image = $('#thumb_site_image');
   var $download = $('#download');
   
-  $full_site_image.cropper();  
+  $full_site_image.cropper();
   $thumb_site_image.cropper({aspectRatio: 4/3});
 
 

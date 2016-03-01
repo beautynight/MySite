@@ -70,17 +70,56 @@ class Database {
         return ($this->query($q));
     }
 	
-    public function insert($table, $params=array()){
+    public function insert($table, $params){
+		if (empty($params)) return -2;
 		@mysql_query('START TRANSACTION');
-    	$sql='INSERT INTO `'.$table.'` (`'.implode('`, `',array_keys($params)).'`) VALUES ("' . implode('", "', $params) . '")';
+    	$sql='INSERT INTO `'.$table.'` (`'.implode('`, `',array_keys($params)).'`) VALUES ("' . implode('","', $params) . '")';
 		//$this->myQuery = $sql;
-		if(@mysql_query($sql)){					
+		if(@mysql_query($sql)){		
+			$last_id = mysql_insert_id();			
 			@mysql_query('COMMIT');
-			return mysql_insert_id();
+			return $last_id;
 		}
-		else{		
-			@mysql_query('ROLLBACK');
+		else{
 			array_push($this->result, mysql_error());
+			@mysql_query('ROLLBACK');
+			return -1;
+		}
+    }
+	
+    public function multiInsert($table, $fields, $params){
+			print_r($params);
+		if (empty($params) || !is_array($params)) return -2;
+		$cnt = count($params[0]);
+
+		foreach($params as $k => $v) {
+			if (!is_array($v) || count($v) !== $cnt) return -3;
+		}
+		
+		// транспонируем массив
+		array_unshift($params, null);
+		$params = call_user_func_array("array_map", $params);
+		
+		// складываем значения в вид (1,11,111),(2,22,222)
+		$arr = array();
+		foreach($params as $k => $v) {
+			$arr[] = '("' . implode('","', $v) . '")';
+		}		
+		
+		
+		@mysql_query('START TRANSACTION');
+    	$sql='INSERT INTO `'.$table.'` (`'.implode('`,`',$fields).'`) VALUES'.implode(',', $arr);
+			print_r($sql);
+		
+		
+		if(@mysql_query($sql)){		
+			$last_id = mysql_insert_id();			
+			@mysql_query('COMMIT');
+			return $last_id;
+		}
+		else{
+			array_push($this->result, mysql_error());
+			@mysql_query('ROLLBACK');
 			return -1;
 		}
     }
@@ -94,12 +133,12 @@ class Database {
 		}
 		$sql='UPDATE '.$table.' SET '.implode(',',$args).' WHERE '.$where;
 		//$this->myQuery = $sql;
-		if(@mysql_query($sql)){			
+		if(@mysql_query($sql)){		
+			return mysql_affected_rows();	
 			@mysql_query('COMMIT');
-			return mysql_affected_rows();
 		}else{
-			@mysql_query('ROLLBACK');
 			array_push($this->result, mysql_error());
+			@mysql_query('ROLLBACK');
 			return -1;
 		}
     }

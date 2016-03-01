@@ -38,7 +38,7 @@ var controls = function() {
 	
 	
 	form = $("#addproject_form");	
-	$('[name]:not([name$="[]"]:visible)', form).on('focusin', function(e) {
+	$('[name]:not([type="checkbox"],[name="ref_percent[]"]):visible', form).on('focusin', function(e) {
 		$(this).parent().removeClass('state-error');
 	});
 	$('div.langs, div.payments').find(':checkbox').on('click', function(e) {
@@ -86,7 +86,7 @@ var imgClickInit = function() {
 
 var addproject_form = function() {
 	form.submit(function(){		
-		var a = $('[name]:not([name$="[]"]:visible)', form).filter(function(i) {return $(this).val() === "";})
+		var a = $('[name]:not([type="checkbox"],[name="ref_percent[]"]):visible', form).filter(function(i) {return $(this).val() === "";})
 			.add('div.payments:not(:has(:checked)) label,div.langs:not(:has(:checked)) label', form)
 			.parent();		
 		a.addClass('state-error');
@@ -105,6 +105,9 @@ var addproject_form = function() {
 		}
 		
 		if (GO) {
+			var d = $('#full_site_image').cropper('getCroppedCanvas');
+			$('[name=screen_data]').val( $('#full_site_image').cropper('getCroppedCanvas', {width:Math.min(1280,d.width*960/d.height,d.width)}).toDataURL('image/jpeg', 0.8) );
+			$('[name=thumb_data]').val( $('#thumb_site_image').cropper('getCroppedCanvas', {width:320}).toDataURL('image/jpeg', 0.8) );
 			$.ajax({
 			   type: 'POST',
 			   url: '_!addproject.php',

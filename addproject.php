@@ -39,17 +39,6 @@
 
                     <div class="section">
                       <label class="field prepend-icon">
-                        <input name="email" class="gui-input onlyEmail" placeholder="Email">
-                        <label class="field-icon">
-                          <i class="fa fa-envelope"></i>
-                        </label>
-                      </label>
-
-                    </div>
-                    <!-- end section -->
-
-                    <div class="section">
-                      <label class="field prepend-icon">
                         <input name="website" class="gui-input onlyUrl" placeholder="Ссылка на проект">
                         <label class="field-icon">
                           <i class="fa fa-globe"></i>
@@ -59,9 +48,9 @@
                     <!-- end section -->
 
                     <div class="section">
-                      <label for="date1" class="field prepend-icon">
+                      <label class="field prepend-icon">
 						  <input type="text" name="date" class="datepicker gui-input" placeholder="Дата начала работы">
-						  <label for="date" class="field-icon">
+						  <label class="field-icon">
 							<i class="fa fa-calendar"></i>
 						  </label>
 						</label>
@@ -82,9 +71,9 @@
                       <label class="field select">
                         <select name="paymenttype">
                           <option value="">Тип выплат</option>
-                          <option value="manual">Ручной</option>
-                          <option value="instant">Инстант (мгновенный)</option>
-                          <option value="auto">Автоматический</option>
+                          <option value="1">Ручной</option>
+                          <option value="2">Инстант (мгновенный)</option>
+                          <option value="3">Автоматический</option>
                         </select>
                         <i class="arrow double"></i>
                       </label>
@@ -149,7 +138,7 @@
 						  <div class="col-md-3 prn" >
 							  <div class="smart-widget sm-left sml-50">
 								<label class="field append-icon">
-								  <input class="gui-input onlyNumber" name="minmoney">							  
+								  <input class="gui-input onlyNumber" name="minmoney[]">							  
 								  <label class="field-icon">
 									<i class="fa fa-money"></i>
 								  </label>
@@ -247,7 +236,7 @@
 						  $div = ceil($db->nums/3);
 						  foreach($db->result as $k => $v) {
 							if ($k%$div === 0) echo '<div class="col-md-4 pad-r40 border-right">';
-							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="payment[]" value="'.$v['id'].'"><span class="checkbox"></span> <i class="pay pay-'.$v['name'].'" ></i> '.$v['name'].'</label>';
+							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="payment[]" value="'.$v['id'].'"><span class="checkbox"></span> <i class="pay pay-'.$v['name'].' mbn" ></i> '.$v['name'].'</label>';
 							if (($k+1)%$div === 0  ||  $k === $db->nums-1) echo '</div>';
 						  }
 						?>					  
@@ -275,11 +264,11 @@
 					<div class="langs">
                     <div class="section row">
 						<?php						
-						  $db->query("select name, shortname, own_name, flag from languages where pos is not null order by pos");
+						  $db->query("select id, name, own_name, flag from languages where pos is not null order by pos");
 						  $div = ceil($db->nums/3);
 						  foreach($db->result as $k => $v) {
 							if ($k%$div === 0) echo '<div class="col-md-4 pad-r40 border-right">';
-							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="lang[]" value="'.$v['shortname'].'"><span class="checkbox"></span> <i class="flag flag-'.$v['flag'].'" ></i>'.$v['name']." ( {$v['own_name']} )".'</label>';
+							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="lang[]" value="'.$v['id'].'"><span class="checkbox"></span> <i class="flag flag-'.$v['flag'].'" ></i>'.$v['name']." ( {$v['own_name']} )".'</label>';
 							if (($k+1)%$div === 0  ||  $k === $db->nums-1) echo '</div>';
 						  }
 						?>					  
@@ -287,11 +276,11 @@
 					
 					<div class="section row" hidden>
 						<?php						
-						  $db->query("select name, shortname, own_name, flag from languages where pos is null order by name");
+						  $db->query("select id, name, own_name, flag from languages where pos is null order by name");
 						  $div = ceil($db->nums/3);
 						  foreach($db->result as $k => $v) {
 							if ($k%$div === 0) echo '<div class="col-md-4 pad-r40 border-right">';
-							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="lang[]" value="'.$v['shortname'].'"><span class="checkbox"></span> <i class="flag flag-'.$v['flag'].'" ></i>'.$v['name']." ( {$v['own_name']} )".'</label>';
+							echo '<label class="block mt15 option option-primary"><input type="checkbox" name="lang[]" value="'.$v['id'].'"><span class="checkbox"></span> <i class="flag flag-'.$v['flag'].'" ></i>'.$v['name']." ( {$v['own_name']} )".'</label>';
 							if (($k+1)%$div === 0  ||  $k === $db->nums-1) echo '</div>';
 						  }
 						?>
@@ -343,10 +332,12 @@
     <div class="section row br-a br-greyer mn mb15 p2">
       <div class="col-md-6 img-container pl1 mb1">
           <img id="full_site_image" src="" alt="Скриншот всего сайта">
+		  <input type="hidden" name="screen_data">
       </div>	  
       
       <div class="col-md-6 img-container pr1 mb1">
           <img id="thumb_site_image" src="" alt="Эскиз">
+		  <input type="hidden" name="thumb_data">
       </div>
 
     </div>
